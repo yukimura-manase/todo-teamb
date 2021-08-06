@@ -1,18 +1,64 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<div>
+
+  <h1>Todo一覧</h1>
+  <table>
+
+      <thead>
+        <tr>
+          <td>タイトル</td>
+          <td>内容</td>
+          <td>期日</td>
+          <td>進捗率(0-100)</td>
+          <td>メモ</td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr v-for="(todo,index) in todos" :key='index'>
+          <td>{{todo.content}}</td>
+          <td>{{todo.title}}</td>
+          <td>{{todo.when}}</td>
+          <td>{{todo.progress}}</td>
+          <td>{{todo.memo}}</td>
+          <button @click="deleteConfirm(index)">削除</button>
+          <button>
+            <router-link :to="{name:'Address_edit'}">
+              編集
+            </router-link>
+          </button>
+        </tr>
+      </tbody>
+
+    </table>
+
+
+
+
+      
+    </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+    import {mapActions} from "vuex";
+
+    export default {
+        data(){
+            return {
+                todos:[]
+            }
+        },
+        created(){
+            this.todos = this.$store.state.todos;
+        },
+        methods:{
+            deleteConfirm(index){
+                if(confirm("削除してよろしいですか？")){
+                    this.deletetodos(index);
+                }
+            },
+            ...mapActions(["deletetodos"]),
+        }
+    }
 </script>
