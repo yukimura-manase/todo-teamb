@@ -12,8 +12,12 @@ export default new Vuex.Store({
     todoPush(state,todo){
       state.todos.push(todo);
       console.log('todoPush完了');
-      console.log(state.todos);
-    }
+      // console.log(state.todos);
+    },
+    deletetodos(state,index){
+      let ind = state.todos.findIndex(todo => todo.index === index)
+      state.todos.splice(ind,1)
+        }
 
   },
   actions: {
@@ -21,6 +25,10 @@ export default new Vuex.Store({
     todoPush({commit},todo){
       console.log('todoPush起動！！');
       commit('todoPush',todo);
+    },
+    deletetodos({commit},index){
+      commit('deletetodos',index);
+
     }
 
   },
