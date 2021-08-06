@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Todo from '../views/Todo.vue'
 import Todolist from '../views/Todolist.vue' 
+import Todoform from '../views/Todoform.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,11 @@ const routes = [
     path: '/Todolist',
     name: 'Todolist',
     component: Todolist
+  },
+  {
+    path: '/Todoform',
+    name: 'Todoform',
+    component: Todoform
   },
 ]
 
