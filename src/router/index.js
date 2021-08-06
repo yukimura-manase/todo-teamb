@@ -29,7 +29,7 @@ const routes = [
     path: '/Todoform',
     name: 'Todoform',
     component: Todoform
-  },
+  }
 ]
 
 const router = new VueRouter({
