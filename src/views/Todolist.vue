@@ -16,26 +16,18 @@
 
       <tbody>
         <tr v-for="(todo,index) in todos" :key='index'>
-          <td>{{todo.content}}</td>
           <td>{{todo.title}}</td>
+          <td>{{todo.content}}</td>
           <td>{{todo.when}}</td>
           <td>{{todo.progress}}</td>
           <td>{{todo.memo}}</td>
           <button @click="deleteConfirm(index)">削除</button>
-          <button>
-            <router-link :to="{name:'Address_edit'}">
-              編集
-            </router-link>
-          </button>
+        
+          <button @click="edit(todo)">編集</button> 
         </tr>
       </tbody>
 
     </table>
-
-
-
-
-      
     </div>
 </template>
 
@@ -58,6 +50,9 @@
                     this.deletetodos(index);
                 }
             },
+            edit(todo){
+            this.$router.push({name:'todo_edit', params:{todo_item:todo}})
+        },
             ...mapActions(["deletetodos"]),
         }
     }

@@ -17,18 +17,24 @@ export default new Vuex.Store({
     deletetodos(state,index){
       let ind = state.todos.findIndex(todo => todo.index === index)
       state.todos.splice(ind,1)
+        },
+
+    todoupdate(state,index){
+      let ind = state.todos.findIndex(todo => todo.index === index )
+      state.todos[index] = ind
         }
-
   },
+  
   actions: {
-
     todoPush({commit},todo){
       console.log('todoPush起動！！');
       commit('todoPush',todo);
     },
     deletetodos({commit},index){
       commit('deletetodos',index);
-
+    },
+    todoupdate({commit},index){
+      commit('todoupdate',index)
     }
 
   },

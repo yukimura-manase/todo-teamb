@@ -29,6 +29,11 @@ const routes = [
     path: '/Todoform',
     name: 'Todoform',
     component: Todoform
+  },
+  {
+    path: '/Todolist/:todo_item?/edit',
+    name: 'todo_edit',
+    component: Todoform
   }
 ]
 
